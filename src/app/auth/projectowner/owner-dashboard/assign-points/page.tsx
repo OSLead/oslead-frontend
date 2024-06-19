@@ -4,13 +4,17 @@ import NavBar from "@/components/Navbar/page";
 import { getCookie } from "cookies-next";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ClipLoader } from "react-spinners";  // Import the spinner component
 
 const Page = () => {
   const [githubPullLink, setGithubPullLink] = useState("");
   const token = getCookie("x-access-token");
   const [difficulty, setDifficulty] = useState("");
+  const [loading, setLoading] = useState(false);  // State to manage loading
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setLoading(true);  // Start loading
     let headersList = {
       Accept: "/",
       "User-Agent": "Thunder Client (https://www.thunderclient.com)",
@@ -38,23 +42,26 @@ const Page = () => {
       console.log(data);
 
       if (response.status === 200) {
-        toast.success("Project added successfully !");
+        toast.success("Points assigned successfully !");
       } else {
-        toast.error("Failed to add project !");
+        toast.error("Failed to assign point !");
         console.log("Error:", data);
       }
     } catch (error) {
-      toast.error("Failed to add project !");
+      toast.error("Failed to assign points !");
       console.error("Error:", error);
+    } finally {
+      setLoading(false);  // Stop loading
     }
   };
+
   return (
     <div className="h-screen bg-[#0D0F16]">
       <NavBar />
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Assign Points </h1>
+            <h1 className="text-5xl font-bold">Assign Points</h1>
             <p className="py-6">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Perferendis quo unde ipsum labore quia dolorum possimus eligendi
@@ -70,7 +77,6 @@ const Page = () => {
                 <label className="label">
                   <span className="label-text">Pull Url</span>
                 </label>
-
                 <input
                   type="url"
                   placeholder="Eg : https://github.com/PandaAnshuman/Recipe_Finder/pull/1"
@@ -95,8 +101,12 @@ const Page = () => {
                 </select>
               </div>
               <div className="form-control mt-6">
-                <button type="submit" className="btn btn-primary">
-                  Assign Points
+                <button type="submit" className="btn btn-primary" disabled={loading}>
+                  {loading ? (
+                    <ClipLoader color="#ffffff" size={20} />
+                  ) : (
+                    "Assign Points"
+                  )}
                 </button>
               </div>
             </form>
@@ -113,7 +123,7 @@ const Page = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme="dark"
       />
     </div>
   );
