@@ -4,17 +4,17 @@ import NavBar from "@/components/Navbar/page";
 import { getCookie } from "cookies-next";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ClipLoader } from "react-spinners";  // Import the spinner component
+import { ClipLoader } from "react-spinners";
 
 const Page = () => {
   const [githubPullLink, setGithubPullLink] = useState("");
   const token = getCookie("x-access-token");
   const [difficulty, setDifficulty] = useState("");
-  const [loading, setLoading] = useState(false);  // State to manage loading
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    setLoading(true);  // Start loading
+    setLoading(true); // Start loading
     let headersList = {
       Accept: "/",
       "User-Agent": "Thunder Client (https://www.thunderclient.com)",
@@ -51,7 +51,7 @@ const Page = () => {
       toast.error("Failed to assign points !");
       console.error("Error:", error);
     } finally {
-      setLoading(false);  // Stop loading
+      setLoading(false); // Stop loading
     }
   };
 
@@ -101,7 +101,11 @@ const Page = () => {
                 </select>
               </div>
               <div className="form-control mt-6">
-                <button type="submit" className="btn btn-primary" disabled={loading}>
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  disabled={loading}
+                >
                   {loading ? (
                     <ClipLoader color="#ffffff" size={20} />
                   ) : (

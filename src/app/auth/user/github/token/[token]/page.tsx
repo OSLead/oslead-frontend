@@ -3,6 +3,7 @@ import { setCookie } from "cookies-next"
 import { useEffect, useState } from "react"
 import NavBar from "@/components/Navbar/page";
 import Loader from "@/components/loader/page";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Page({ params }: { params: { token: string } }) {
   const [loading, setLoading] = useState(true);
@@ -47,14 +48,12 @@ export default function Page({ params }: { params: { token: string } }) {
           window.location.href = "/registration";
         }
 
-        // change CONTRIBUTOR --> MAINTAINER in maintainer auth page.
         setCookie("user-type", "CONTRIBUTOR", {
           maxAge: 60 * 6 * 24,
         });
       }
     } catch (error) {
-      // Alert the user about the error
-      // Send the user to previous page
+      toast.error("Login Again");
     }
   };
   useEffect(() => {
@@ -88,6 +87,18 @@ export default function Page({ params }: { params: { token: string } }) {
           )}
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }

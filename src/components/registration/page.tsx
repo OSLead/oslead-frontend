@@ -40,7 +40,7 @@ const RegistrationForm = () => {
 
     try {
       const response = await fetch(
-        "https://oslead-backend.onrender.com/api/user/register",
+        "https://oslead-backend.onrender.com/api/contributor/register",
         {
           method: "POST",
           headers: {

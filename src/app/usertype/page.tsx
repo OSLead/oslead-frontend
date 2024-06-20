@@ -10,7 +10,6 @@ const Page = () => {
     <div className="h-screen bg-[#0D0F16] flex flex-col justify-center items-center">
       <NavBar />
       <div className="mt-10 flex flex-col md:flex-row justify-center items-center gap-4">
-        {/* First Card */}
         <div className="card w-full md:w-96 glass mx-4 transform transition duration-300 hover:scale-105 hover:shadow-2xl border border-yellow-500 rounded-xl bg-opacity-10 backdrop-blur-lg drop-shadow-xl">
           <figure>
             <img

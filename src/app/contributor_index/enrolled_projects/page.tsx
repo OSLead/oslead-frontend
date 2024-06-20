@@ -138,7 +138,7 @@ const Page = () => {
   };
 
   return (
-    <div className="h-full bg-[#1C1E26] text-white">
+    <div className="h-full bg-[#0D0F16] text-white">
       <NavBar />
       <h1 className="text-center text-2xl font-bold mt-20">
         Enrolled Projects
