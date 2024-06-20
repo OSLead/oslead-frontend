@@ -41,7 +41,7 @@ const Page = () => {
       };
 
       let bodyContent = JSON.stringify({
-        token:token,
+        token: token,
       });
 
       try {
@@ -68,12 +68,12 @@ const Page = () => {
   }, []);
 
   return (
-    <div className="h-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white">
+    <div className="h-full min-h-screen bg-gradient-to-r from-purple-500 to-indigo-500 text-white">
       <NavBar />
       <div className="max-w-4xl mx-auto p-6">
         <h1 className="text-4xl font-bold mb-6 text-center">My Profile</h1>
         {loading ? (
-          <div className="flex justify-center items-center h-full">
+          <div className="flex justify-center items-center h-screen">
             <ClipLoader color="#ffffff" loading={loading} size={50} />
           </div>
         ) : (
@@ -92,7 +92,7 @@ const Page = () => {
                 <p className="text-sm text-gray-400">{userData.email}</p>
               </div>
             </div>
-            {evalData && (
+            {evalData ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
                   <h3 className="text-xl font-semibold mb-1 text-indigo-500">
@@ -109,8 +109,12 @@ const Page = () => {
                   <p className="bg-gray-100 p-2 rounded">{rank}</p>
                 </div>
               </div>
+            ) : (
+              <p className="text-center text-xl text-gray-500">
+                Rank not available
+              </p>
             )}
-            <div className=" md:grid-cols-2 gap-4 ">
+            <div className="md:grid-cols-2 gap-4">
               <div>
                 <h3 className="text-xl font-semibold mb-1 text-indigo-500">
                   College Name
@@ -144,7 +148,7 @@ const Page = () => {
                   Size: {userData.delivery_details?.tshirt?.size}
                 </p>
               </div>
-              {evalData && (
+              {evalData && evalData.pointHistory.length > 0 ? (
                 <div className="col-span-2">
                   <h3 className="text-xl font-semibold mb-1 text-indigo-500">
                     Points History
@@ -173,30 +177,42 @@ const Page = () => {
                     ))}
                   </ul>
                 </div>
+              ) : (
+                <p className="text-center text-xl text-gray-500">
+                  Give PRs to show the pull history
+                </p>
               )}
             </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-1 text-indigo-500">
-                Social Links
-              </h3>
-              <div className="flex space-x-4">
-                <a
-                  href={`https://github.com/${userData.github_id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-700 hover:text-gray-900"
-                >
-                  <FaGithub size={30} />
-                </a>
-                <a
-                  href={userData.linked_in}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-700 hover:text-gray-900"
-                >
-                  <FaLinkedin size={30} />
-                </a>
+            <div className="flex justify-between items-center">
+              <div>
+                <h3 className="text-xl font-semibold mb-1 text-indigo-500">
+                  Social Links
+                </h3>
+                <div className="flex space-x-4">
+                  <a
+                    href={`https://github.com/${userData?.username}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-700 hover:text-gray-900"
+                  >
+                    <FaGithub size={30} />
+                  </a>
+                  <a
+                    href={userData?.linked_in}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-700 hover:text-gray-900"
+                  >
+                    <FaLinkedin size={30} />
+                  </a>
+                </div>
               </div>
+              <a
+                className="bg-indigo-500 text-white py-2 px-4 rounded hover:bg-black"
+                href="/update_details/contributor"
+              >
+                Update Details
+              </a>
             </div>
           </div>
         )}
