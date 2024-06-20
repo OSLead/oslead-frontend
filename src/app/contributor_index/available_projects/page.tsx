@@ -113,7 +113,7 @@ const Page = () => {
       );
       const result = await response.json();
 
-      if(response.status ===200{
+      if(response.status ===200){
         toast.success(result.message);
       }else{
         toast.error(result.message)
