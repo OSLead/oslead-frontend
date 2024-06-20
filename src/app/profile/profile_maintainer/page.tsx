@@ -188,7 +188,7 @@ const Page = () => {
                 </h3>
                 <div className="flex space-x-4">
                   <a
-                    href={`https://github.com/${userData?.github_id}`}
+                    href={`https://github.com/${userData?.username}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-700 hover:text-gray-900"
