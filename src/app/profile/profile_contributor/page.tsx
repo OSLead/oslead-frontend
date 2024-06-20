@@ -41,8 +41,7 @@ const Page = () => {
       };
 
       let bodyContent = JSON.stringify({
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjY3MmI0MmVkOWMwZmFjYTMzODVjOGJhIiwiaWF0IjoxNzE4ODE1NDI2LCJleHAiOjE3MTk0MjAyMjZ9.wSY_1sXLkfZ-2QDYolCA2OZ1vVD7uUzfYdY1b39Yd_0",
+        token:token,
       });
 
       try {
