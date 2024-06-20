@@ -139,15 +139,15 @@ const Page = () => {
     <div className="min-h-screen">
       <NavBar />
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 px-4 py-12">
-        <div className="bg-gray-800 text-white p-8 rounded-lg shadow-2xl w-full max-w-lg">
-          <h2 className="text-3xl font-bold mb-6 text-center text-blue-400">
-            Mentor Details Updation Form
-          </h2>
-          {loading ? (
-            <div className="flex justify-center">
-              <ClipLoader color="#3498db" loading={loading} size={50} />
-            </div>
-          ) : (
+        {loading ? (
+          <div className="flex justify-center items-center w-full h-full">
+            <ClipLoader color="#3498db" loading={loading} size={50} />
+          </div>
+        ) : (
+          <div className="bg-gray-800 text-white p-8 rounded-lg shadow-2xl w-full max-w-lg">
+            <h2 className="text-3xl font-bold mb-6 text-center text-blue-400">
+              Mentor Details Updation Form
+            </h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* College Name */}
               <div className="form-group">
@@ -283,21 +283,21 @@ const Page = () => {
                 Update
               </button>
             </form>
-          )}
-          <ToastContainer
-            position="top-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-          />
-        </div>
+          </div>
+        )}
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 };

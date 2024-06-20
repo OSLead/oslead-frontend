@@ -38,9 +38,8 @@ const Page = () => {
     }));
   };
 
-  const ChangeData = async (token: string) => {
+  const changeData = async (token: string) => {
     console.log("Loading..");
-    setLoading(true);
     try {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -57,7 +56,7 @@ const Page = () => {
       };
 
       const response = await fetch(
-        "https://oslead-backend.onrender.com/api/contributor/profile-details",
+        "https://oslead-backend.onrender.com/api/contributor/details-own",
         requestOptions
       );
       const data = await response.json();
@@ -77,9 +76,7 @@ const Page = () => {
         });
       }
     } catch (error) {
-      toast.error("Update Failed ");
-    } finally {
-      setLoading(false);
+      toast.error("Login Again");
     }
   };
 
@@ -114,16 +111,16 @@ const Page = () => {
         }
       );
       if (response.status === 200) {
-        ChangeData(token); // Call ChangeData function here
+        changeData(token); // Call ChangeData function here
       } else {
-        toast.error("Failed to register");
+        toast.error("Failed to Update");
       }
 
       const result = await response.json();
       console.log(result);
     } catch (error) {
       console.error(error);
-      toast.error("Failed to register");
+      toast.error("Failed to update");
     } finally {
       setLoading(false);
     }
