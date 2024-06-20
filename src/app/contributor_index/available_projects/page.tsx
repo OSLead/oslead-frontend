@@ -111,13 +111,19 @@ const Page = () => {
         "https://oslead-backend.onrender.com/api/projects/enroll-project",
         requestOptions
       );
-      const result = await response.text();
-      toast.success(result);
+      const result = await response.json();
+
+      if(response.status ===200{
+        toast.success(result.message);
+      }else{
+        toast.error(result.message)
+      }
+  
     } catch (error) {
       console.error("Error enrolling in project:", error);
       toast.error("Error enrolling in project");
     } finally {
-      setEnrolling(false); // Reset enrolling state after enrollment attempt
+      setEnrolling(false); 
     }
   };
 
