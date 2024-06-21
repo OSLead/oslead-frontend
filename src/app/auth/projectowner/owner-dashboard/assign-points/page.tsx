@@ -56,13 +56,13 @@ const Page = () => {
   };
 
   return (
-    <div className="h-screen bg-[#0D0F16]">
+    <div className="h-screen bg-[#0D0F16] text-white">
       <NavBar />
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Assign Points</h1>
-            <p className="py-6">
+      <div className="hero min-h-screen flex items-center justify-center">
+        <div className="hero-content flex flex-col lg:flex-row-reverse p-8">
+          <div className="text-center lg:text-left mb-8 lg:mb-0 lg:w-1/2">
+            <h1 className="text-5xl font-bold text-white">Assign Points</h1>
+            <p className="py-6 text-gray-400">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Perferendis quo unde ipsum labore quia dolorum possimus eligendi
               dolorem? Dolor architecto nihil libero, aut ipsa saepe placeat
@@ -71,39 +71,43 @@ const Page = () => {
               voluptatum culpa, earum ratione alias maxime nulla dolores fugit.
             </p>
           </div>
-          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-gray-800 rounded-lg p-6">
             <form className="card-body" onSubmit={handleSubmit}>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Pull Url</span>
+              <div className="form-control mb-4">
+                <label className="label mb-2">
+                  <span className="label-text text-gray-400">Pull URL</span>
                 </label>
                 <input
                   type="url"
-                  placeholder="Eg : https://github.com/PandaAnshuman/Recipe_Finder/pull/1"
-                  className="input input-bordered"
+                  placeholder="Eg: https://github.com/PandaAnshuman/Recipe_Finder/pull/1"
+                  className="input input-bordered w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   value={githubPullLink}
                   onChange={(e) => setGithubPullLink(e.target.value)}
                   required
                 />
-                <label className="block text-gray-400 mb-2">Difficulty</label>
+              </div>
+              <div className="form-control mb-6">
+                <label className="label mb-2">
+                  <span className="label-text text-gray-400">Difficulty</span>
+                </label>
                 <select
-                  className="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none"
+                  className="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   value={difficulty}
                   onChange={(e) => setDifficulty(e.target.value)}
                   required
                 >
                   <option disabled value="">
-                    Choose Issue difficulty
+                    Choose Issue Difficulty
                   </option>
                   <option value="EASY">Easy</option>
                   <option value="MEDIUM">Medium</option>
                   <option value="HARD">Hard</option>
                 </select>
               </div>
-              <div className="form-control mt-6">
+              <div className="form-control">
                 <button
                   type="submit"
-                  className="btn btn-primary"
+                  className="text-white btn btn-primary w-full py-3 rounded-lg bg-blue-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50"
                   disabled={loading}
                 >
                   {loading ? (
