@@ -75,6 +75,8 @@ const Page = () => {
         setCookie("user-type", "MAINTAINER", {
           maxAge: 60 * 6 * 24,
         });
+      } else {
+        toast.error("Failed to fetch profile details");
       }
     } catch (error) {
       toast.error("Update Failed ");
@@ -113,8 +115,10 @@ const Page = () => {
           }),
         }
       );
+
       if (response.status === 200) {
-        ChangeData(token); // Call ChangeData function here
+        toast.success("Registration successful");
+        await ChangeData(token); // Call ChangeData function here
       } else {
         toast.error("Failed to register");
       }
