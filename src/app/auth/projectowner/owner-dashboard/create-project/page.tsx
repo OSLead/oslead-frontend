@@ -107,7 +107,10 @@ const Page = () => {
       if (response.ok) {
         toast.success("Project added successfully!");
         setGithubRepoLink(""); // Clear input field on success
-        setProjects([...projects, JSON.parse(data)]); // Update the project list
+        // Update the project list
+        setProjects([...projects, JSON.parse(data)]);
+        // Refresh the page
+        window.location.reload();
       } else {
         toast.error("Failed to add project!");
       }
