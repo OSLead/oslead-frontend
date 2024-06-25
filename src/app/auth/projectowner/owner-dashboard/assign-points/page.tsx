@@ -97,9 +97,9 @@ const Page = () => {
                   <option disabled value="">
                     Choose Issue Difficulty
                   </option>
-                  <option value="EASY">Easy</option>
-                  <option value="MEDIUM">Medium</option>
-                  <option value="HARD">Hard</option>
+                  <option value="EASY">Easy : 25</option>
+                  <option value="MEDIUM">Medium : 50</option>
+                  <option value="HARD">Hard : 75</option>
                 </select>
               </div>
               <div className="form-control">
