@@ -63,10 +63,9 @@ const Page = () => {
       const data = await response.json();
 
       if (response.status === 200) {
-        setUpdationSuccess(true);
-        console.log("CHANGED DATA");
-        console.log(data);
         toast.success("Details updated successfully !!");
+        setUpdationSuccess(true);
+        
 
         setCookie("user-data", JSON.stringify(data), {
           maxAge: 60 * 6 * 24,
@@ -117,10 +116,10 @@ const Page = () => {
       );
 
       if (response.status === 200) {
-        toast.success("Registration successful");
+        toast.success("Updation Processing !!");
         await ChangeData(token); // Call ChangeData function here
       } else {
-        toast.error("Failed to register");
+        toast.error("Failed to Update ");
       }
 
       const result = await response.json();
