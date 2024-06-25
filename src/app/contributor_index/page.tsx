@@ -28,7 +28,7 @@ const Page = () => {
           <div className="card w-100 glass border border-yellow-500 rounded-xl bg-opacity-10 backdrop-blur-lg drop-shadow-xl hover:shadow-2xl transform transition duration-300 hover:scale-105">
             <figure className="px-10 pt-10">
               <img
-                src="https://thumbs.dreamstime.com/z/green-surface-there-figures-businessmen-torn-paper-inscription-become-contributor-business-finance-255234097.jpg?ct=jpeg"
+                src="/addProject.png"
                 alt="Available Projects"
                 className="w-full h-48 object-cover rounded-t-xl"
               />
@@ -53,7 +53,7 @@ const Page = () => {
           <div className="card w-100 glass border border-yellow-500 rounded-xl bg-opacity-10 backdrop-blur-lg drop-shadow-xl hover:shadow-2xl transform transition duration-300 hover:scale-105">
             <figure className="px-10 pt-10">
               <img
-                src="https://thumbs.dreamstime.com/z/green-surface-there-figures-businessmen-torn-paper-inscription-become-contributor-business-finance-255234097.jpg?ct=jpeg"
+                src="/assignPoint.png"
                 alt="Enrolled Projects"
                 className="w-full h-48 object-cover rounded-t-xl"
               />
