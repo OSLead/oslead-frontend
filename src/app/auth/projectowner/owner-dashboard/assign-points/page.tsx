@@ -63,12 +63,10 @@ const Page = () => {
           <div className="text-center lg:text-left mb-8 lg:mb-0 lg:w-1/2">
             <h1 className="text-5xl font-bold text-white">Assign Points</h1>
             <p className="py-6 text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Perferendis quo unde ipsum labore quia dolorum possimus eligendi
-              dolorem? Dolor architecto nihil libero, aut ipsa saepe placeat
-              possimus molestiae mollitia asperiores voluptate molestias
-              voluptas eos animi iusto repellendus! Aliquid pariatur ex minima
-              voluptatum culpa, earum ratione alias maxime nulla dolores fugit.
+             Copy the link of the merged pull request from github, paste it here and 
+            select the hardness of the issue merged and click on assign points.
+            For Easy 25, Medium : 50, Hard : 75 Points will be assigned.
+            Make sure you do it wisely coz it cannot be reverted back.
             </p>
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-gray-800 rounded-lg p-6">
