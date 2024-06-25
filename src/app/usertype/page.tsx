@@ -19,9 +19,9 @@ const Page = () => {
             />
           </figure>
           <div className="card-body p-4">
-            <h2 className="card-title text-xl font-bold mb-2">Life hack</h2>
+            <h2 className="card-title text-xl font-bold mb-2">Contributor</h2>
             <p className="text-sm text-white">
-              How to park your car at your garage?
+               Login through your Github Account and make sure Your (Github Name, Github Email) is public.
             </p>
             <div className="mt-4 flex justify-end">
               <Link
@@ -44,9 +44,9 @@ const Page = () => {
             />
           </figure>
           <div className="card-body p-4">
-            <h2 className="card-title text-xl font-bold mb-2">Life hack</h2>
+            <h2 className="card-title text-xl font-bold mb-2">Project Admins</h2>
             <p className="text-sm text-white">
-              How to park your car at your garage?
+               Login through your Github Account and make sure Your (Github Name, Github Email) is public.
             </p>
             <div className="mt-4 flex justify-end">
               <Link
@@ -55,7 +55,7 @@ const Page = () => {
                 }
                 className="btn btn-info text-white"
               >
-                Login as Mentor!
+                Login as PA!
               </Link>
             </div>
           </div>
