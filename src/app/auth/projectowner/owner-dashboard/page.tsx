@@ -13,14 +13,14 @@ const Page = () => {
         <div className="card w-full md:w-96 glass mx-4">
           <figure>
             <img
-              src="https://via.placeholder.com/400x250?text=Create+Project"
-              alt="Create Project"
+              src="/addProject.png"
+              alt="Create Add Project"
               className="w-full h-48 object-cover rounded-t"
             />
           </figure>
           <div className="card-body p-4">
             <h2 className="card-title text-xl font-bold mb-2 text-white">
-              Create Project
+             Create Add Project
             </h2>
             <p className="text-sm text-gray-300">
               Start a new project and manage its details effortlessly.
@@ -40,7 +40,7 @@ const Page = () => {
         <div className="card w-full md:w-96 glass mx-4">
           <figure>
             <img
-              src="https://via.placeholder.com/400x250?text=Assign+Points"
+              src="/assignPoint.png"
               alt="Assign Points"
               className="w-full h-48 object-cover rounded-t"
             />
