@@ -30,7 +30,7 @@ const Page = () => {
         })
         .catch((error) => console.error("Error fetching GitHub photo:", error));
     }
-    console.log(token);
+    // console.log(token);
 
     // Fetch additional data from the new API
     const fetchAdditionalData = async () => {

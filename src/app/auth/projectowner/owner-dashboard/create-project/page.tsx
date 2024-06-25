@@ -102,15 +102,16 @@ const Page = () => {
       );
 
       const data = await response.text();
-      console.log(data);
 
       if (response.ok) {
         toast.success("Project added successfully!");
         setGithubRepoLink(""); // Clear input field on success
         // Update the project list
         setProjects([...projects, JSON.parse(data)]);
-        // Refresh the page
-        window.location.reload();
+        // Refresh the page after a delay
+        setTimeout(() => {
+          fetchProjects();
+        }, 2000); // 2-second delay
       } else {
         toast.error("Failed to add project!");
       }
@@ -244,7 +245,7 @@ const Page = () => {
                 >
                   <div className="flex items-center p-4 sm:p-6">
                     <Image
-                      src={project.projectDetails.owner.avatar_url}
+                      src={project.projectDetails?.owner?.avatar_url}
                       alt="Owner Avatar"
                       height={70}
                       width={70}
@@ -252,21 +253,21 @@ const Page = () => {
                     />
                     <div className="flex-grow">
                       <h2 className="text-xl font-semibold text-white">
-                        {project.projectDetails.name}
+                        {project.projectDetails?.name}
                       </h2>
                       <p className="text-gray-400">
-                        Owner: {project.projectDetails.owner.login}
+                        Owner: {project.projectDetails?.owner?.login}
                       </p>
                       <p className="text-gray-400 mt-2">
-                        {project.projectDetails.description ||
+                        {project.projectDetails?.description ||
                           "No description available"}
                       </p>
                       <p className="text-gray-400 mt-1">
-                        Language: {project.projectDetails.language}
+                        Language: {project.projectDetails?.language}
                       </p>
                       <div className="flex flex-col sm:flex-row justify-between mt-4">
                         <a
-                          href={project.projectDetails.html_url}
+                          href={project.projectDetails?.html_url}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="mb-2 sm:mb-0 block bg-blue-600 hover:bg-blue-700 text-white text-center p-2 rounded-lg transition duration-300"

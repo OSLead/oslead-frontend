@@ -18,12 +18,12 @@ const NavBar = () => {
 
     if (getUserData) {
       setUserData(JSON.parse(getUserData) || null);
-      console.log("User Data", JSON.parse(getUserData));
+      // console.log("User Data", JSON.parse(getUserData));
     }
 
     if (getUserType) {
       setUserType(getUserType || null);
-      console.log("User Type", getUserType);
+      // console.log("User Type", getUserType);
     }
   }, []);
 
@@ -86,7 +86,7 @@ const NavBar = () => {
 
             <ul
               tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#181d21]  text-white rounded-box w-52"
             >
               <li>
                 <a
@@ -126,7 +126,7 @@ const NavBar = () => {
 
             <ul
               tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#181d21] text-white  rounded-box w-52"
             >
               <li>
                 <a

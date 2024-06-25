@@ -66,7 +66,7 @@ const MentorRegistration = () => {
       }
 
       const result = await response.json();
-      console.log(result);
+      // console.log(result);
     } catch (error) {
       console.error(error);
       toast.error("Failed to register");
