@@ -15,7 +15,7 @@ interface Project {
   _id: string;
 }
 
-// Define the interface for the pull request data
+
 interface PullRequest {
   number: number;
   title: string;
@@ -138,11 +138,28 @@ const Page = () => {
   };
 
   return (
-    <div className="h-full bg-[#0D0F16] text-white">
+    <div className="h-screen bg-[#0D0F16] text-white">
       <NavBar />
       <h1 className="text-center text-2xl font-bold mt-20">
         Enrolled Projects
       </h1>
+      <div className="flex flex-wrap justify-center gap-6 p-6">
+        <div className="card w-full sm:w-96 bg-[#282c34] shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105">
+          <div className="card-body p-6">
+            <h2 className="card-title text-xl font-semibold mb-4">
+              Points System
+            </h2>
+            <p className="mb-4">
+              Understand the points system for different levels:
+            </p>
+            <ul className="list-disc pl-5">
+              <li className="mb-2">Beginner: 20 points</li>
+              <li className="mb-2">Intermediate: 30 points</li>
+              <li>Advanced: 40 points</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
       <div className="flex flex-wrap justify-center gap-6 p-6">
         {loading ? (
