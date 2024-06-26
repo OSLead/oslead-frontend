@@ -12,9 +12,8 @@ const Page = () => {
       </h1>
       <div className="text-base sm:text-lg lg:text-xl mb-6 text-center">
         <p className="mb-2">
-          1. Your email address must be public on your GitHub account.
+          1. Your name must be provided on your GitHub account.
         </p>
-        <p>2. Your name must be provided on your GitHub account.</p>
       </div>
       <a
         className="bg-blue-700 hover:bg-black text-white font-bold py-2 px-4 rounded flex items-center"

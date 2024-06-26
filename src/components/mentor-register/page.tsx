@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { getCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -60,6 +60,9 @@ const MentorRegistration = () => {
       );
       if (response.status === 200) {
         setRegistrationSuccess(true);
+        setCookie("user-data", JSON.stringify(formData), {
+          maxAge: 60 * 6 * 24,
+        });
         toast.success("Registration successful");
       } else {
         toast.error("Failed to register");
