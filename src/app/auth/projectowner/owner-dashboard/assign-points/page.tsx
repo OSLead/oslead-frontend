@@ -63,10 +63,11 @@ const Page = () => {
           <div className="text-center lg:text-left mb-8 lg:mb-0 lg:w-1/2">
             <h1 className="text-5xl font-bold text-white">Assign Points</h1>
             <p className="py-6 text-gray-400">
-             Copy the link of the merged pull request from github, paste it here and 
-            select the hardness of the issue merged and click on assign points.
-            For Easy 25, Medium : 50, Hard : 75 Points will be assigned.
-            Make sure you do it wisely coz it cannot be reverted back.
+              Copy the link of the merged pull request from github, paste it
+              here and select the hardness of the issue merged and click on
+              assign points. For Beginner: 20, Intermediate : 30, Advanced : 50
+              Points will be assigned. Make sure you do it wisely coz it cannot
+              be reverted back.
             </p>
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-gray-800 rounded-lg p-6">
@@ -97,9 +98,9 @@ const Page = () => {
                   <option disabled value="">
                     Choose Issue Difficulty
                   </option>
-                  <option value="EASY">Easy : 25</option>
-                  <option value="MEDIUM">Medium : 50</option>
-                  <option value="HARD">Hard : 75</option>
+                  <option value="EASY">Beginner : 20</option>
+                  <option value="MEDIUM">Intermediate : 30</option>
+                  <option value="HARD">Advanced : 40</option>
                 </select>
               </div>
               <div className="form-control">

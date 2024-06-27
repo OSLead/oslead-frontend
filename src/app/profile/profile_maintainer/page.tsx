@@ -68,9 +68,9 @@ const Page = () => {
   }, []);
 
   const getDifficultyLabel = (points: number) => {
-    if (points === 25) return "Easy";
-    if (points === 50) return "Medium";
-    if (points === 75) return "Hard";
+    if (points === 20) return "Beginner";
+    if (points === 30) return "Intermediate";
+    if (points === 40) return "Advanced";
     return "Unknown";
   };
 
