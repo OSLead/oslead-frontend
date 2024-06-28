@@ -61,7 +61,9 @@ const RegistrationForm = () => {
       );
       if (response.status === 200) {
         setRegistrationSuccess(true);
-        
+        setCookie("user-data", JSON.stringify(formData), {
+          maxAge: 60 * 6 * 24,
+        });
         toast.success("Registration successful");
       } else {
         toast.error("Failed to register");
