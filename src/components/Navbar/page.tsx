@@ -98,7 +98,7 @@ const NavBar = () => {
               </li>
               <li>
                 <a href={"/auth/projectowner/owner-dashboard"}>
-                  Mentor Dashboard
+                  PA Dashboard
                 </a>
               </li>
               <li>
