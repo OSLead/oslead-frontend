@@ -166,7 +166,7 @@ export default function Home() {
                   Leaderboard
                 </span>{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r font-[800] from-[#ff3d6d] to-[#ffe100]">
-                  2K24
+                  2025
                 </span>
               </p>
             </div>
@@ -195,7 +195,7 @@ export default function Home() {
 
       {!loadingLeaderboard && topThree.length + leaderboard.length < 4 ? (
         <div className="text-center text-white">
-          The leaderboard is yet to be started.
+          The leaderboard is yet to be started Login if you have not created your account.
         </div>
       ) : (
         <>
