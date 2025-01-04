@@ -149,7 +149,7 @@ const Page = () => {
         ) : (
           <div className="bg-gray-800 text-white p-8 rounded-lg shadow-2xl w-full max-w-lg">
             <h2 className="text-3xl font-bold mb-6 text-center text-blue-400">
-              Mentor Details Updation Form
+              Profile Details Updation Form
             </h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* College Name */}
