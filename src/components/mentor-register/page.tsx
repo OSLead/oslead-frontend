@@ -86,7 +86,7 @@ const MentorRegistration = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 px-4 py-12">
       <div className="bg-gray-800 text-white p-8 rounded-lg shadow-2xl w-full max-w-lg">
         <h2 className="text-3xl font-bold mb-6 text-center text-blue-400">
-          PA Registration Form
+         Profile Registration Form
         </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* College Name */}
