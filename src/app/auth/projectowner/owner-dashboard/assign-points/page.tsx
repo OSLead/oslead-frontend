@@ -65,7 +65,7 @@ const Page = () => {
             <p className="py-6 text-gray-400">
               Copy the link of the merged pull request from github, paste it
               here and select the hardness of the issue merged and click on
-              assign points. For Beginner: 20, Intermediate : 30, Advanced : 50
+              assign points. For Beginner: 20, Intermediate : 30, Advanced : 40
               Points will be assigned. Make sure you do it wisely coz it cannot
               be reverted back.
             </p>
