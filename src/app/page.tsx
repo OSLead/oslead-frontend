@@ -52,7 +52,7 @@ export default function Home() {
         };
 
         const response = await fetch(
-          "https://oslead-backend.onrender.com/api/projects/leaderboard",
+          "https://oslead-backend.vercel.app/api/projects/leaderboard",
           {
             method: "GET",
             headers: headersList,

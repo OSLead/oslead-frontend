@@ -57,7 +57,7 @@ const Page = () => {
         };
 
         const response = await fetch(
-          "https://oslead-backend.onrender.com/api/projects/enrolled-projects",
+          "https://oslead-backend.vercel.app/api/projects/enrolled-projects",
           requestOptions
         );
         const result = await response.json();

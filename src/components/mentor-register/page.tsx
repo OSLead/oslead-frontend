@@ -40,7 +40,7 @@ const MentorRegistration = () => {
 
     try {
       const response = await fetch(
-        "https://oslead-backend.onrender.com/api/maintainer/register",
+        "https://oslead-backend.vercel.app/api/maintainer/register",
         {
           method: "POST",
           headers: {

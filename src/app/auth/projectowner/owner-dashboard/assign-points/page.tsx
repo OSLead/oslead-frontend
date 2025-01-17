@@ -30,7 +30,7 @@ const Page = () => {
 
     try {
       const response = await fetch(
-        "https://oslead-backend.onrender.com/api/projects/analyze-pull-points",
+        "https://oslead-backend.vercel.app/api/projects/analyze-pull-points",
         {
           method: "POST",
           body: bodyContent,
