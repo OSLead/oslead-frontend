@@ -27,7 +27,7 @@ export default function Page({ params }: { params: { token: string } }) {
       };
 
       const response = await fetch(
-        "https://oslead-backend.onrender.com/api/maintainer/profile-details",
+        "https://oslead-backend.vercel.app/api/maintainer/profile-details",
         requestOptions
       );
       const data = await response.json();

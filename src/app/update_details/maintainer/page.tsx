@@ -57,7 +57,7 @@ const Page = () => {
       };
 
       const response = await fetch(
-        "https://oslead-backend.onrender.com/api/maintainer/profile-details",
+        "https://oslead-backend.vercel.app/api/maintainer/profile-details",
         requestOptions
       );
       const data = await response.json();
@@ -96,7 +96,7 @@ const Page = () => {
 
     try {
       const response = await fetch(
-        "https://oslead-backend.onrender.com/api/maintainer/register",
+        "https://oslead-backend.vercel.app/api/maintainer/register",
         {
           method: "POST",
           headers: {

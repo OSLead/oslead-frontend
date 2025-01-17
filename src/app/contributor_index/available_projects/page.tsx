@@ -67,7 +67,7 @@ const Page = () => {
         };
 
         const response = await fetch(
-          "https://oslead-backend.onrender.com/api/projects/get-projects",
+          "https://oslead-backend.vercel.app/api/projects/get-projects",
           requestOptions
         );
 
@@ -108,7 +108,7 @@ const Page = () => {
       };
 
       const response = await fetch(
-        "https://oslead-backend.onrender.com/api/projects/enroll-project",
+        "https://oslead-backend.vercel.app/api/projects/enroll-project",
         requestOptions
       );
       const result = await response.json();

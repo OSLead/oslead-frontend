@@ -48,7 +48,7 @@ const Page = () => {
       });
 
       const response = await fetch(
-        "https://oslead-backend.onrender.com/api/projects/get-published-projects",
+        "https://oslead-backend.vercel.app/api/projects/get-published-projects",
         {
           method: "POST",
           body: bodyContent,
@@ -93,7 +93,7 @@ const Page = () => {
 
     try {
       const response = await fetch(
-        "https://oslead-backend.onrender.com/api/projects/create-project",
+        "https://oslead-backend.vercel.app/api/projects/create-project",
         {
           method: "POST",
           body: bodyContent,
@@ -146,7 +146,7 @@ const Page = () => {
 
       try {
         const response = await fetch(
-          "https://oslead-backend.onrender.com/api/projects/delete-project",
+          "https://oslead-backend.vercel.app/api/projects/delete-project",
           {
             method: "POST",
             body: bodyContent,

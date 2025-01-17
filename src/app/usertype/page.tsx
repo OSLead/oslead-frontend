@@ -25,7 +25,7 @@ const Page = () => {
             </p>
             <div className="mt-4 flex justify-end">
               <Link
-                href={"https://oslead-backend.onrender.com/api/auth/github"}
+                href={"https://oslead-backend.vercel.app/api/auth/github"}
                 className="btn btn-info text-white"
               >
                 Login as Contributor!
@@ -51,7 +51,7 @@ const Page = () => {
             <div className="mt-4 flex justify-end">
               <Link
                 href={
-                  "https://oslead-backend.onrender.com/api/maintainer/auth/github"
+                  "https://oslead-backend.vercel.app/api/maintainer/auth/github"
                 }
                 className="btn btn-info text-white"
               >

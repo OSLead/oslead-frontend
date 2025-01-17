@@ -46,7 +46,7 @@ const Page = () => {
 
       try {
         let response = await fetch(
-          "https://oslead-backend.onrender.com/api/maintainer/dashboard-profile",
+          "https://oslead-backend.vercel.app/api/maintainer/dashboard-profile",
           {
             method: "POST",
             body: bodyContent,
