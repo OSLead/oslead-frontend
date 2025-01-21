@@ -7,11 +7,13 @@ import { setCookie } from "cookies-next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useRouter } from 'next/navigation';
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
+  const router = useRouter();
   const [adminLoginSuccess, setAdminLoginSuccess] = useState(false); // Track login success
   const [formData, setFormData] = useState({
     username: "",
@@ -61,8 +63,7 @@ export function LoginForm({
 
   useEffect(() => {
       if (adminLoginSuccess) {
-        // Redirect to another page here
-        window.location.href = "/admin/dashboard/view/pa";
+        router.push("/admin/dashboard/view/pa");
       }
     }, [adminLoginSuccess]);
 

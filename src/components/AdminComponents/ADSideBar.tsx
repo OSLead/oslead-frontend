@@ -4,7 +4,7 @@ import * as React from "react";
 import { SearchForm } from "@/components/AdminComponents/ADSearchForm";
 import Link from "next/link";
 import { setCookie,getCookie } from "cookies-next";
-import { useRouter } from "next/router"; 
+import { useRouter } from "next/navigation"; 
 
 import {
   Sidebar,
@@ -51,9 +51,10 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const router = useRouter();
   const handleLogout = () => {
     setCookie("user-data", "", { maxAge: -1 });
-    window.location.href="/admin"
+    router.push("/admin");
   };
   return (
     <Sidebar {...props} style={{backgroundColor:"white"}}>
@@ -73,7 +74,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
                       asChild
-                      isActive={item.isActive}
                       onClick={
                         item.title === "Logout" ? handleLogout : undefined
                       }

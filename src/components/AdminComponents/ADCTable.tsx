@@ -42,6 +42,7 @@ import {
 import { getCookie } from "cookies-next";
 import { DialogOverlay } from "@radix-ui/react-dialog";
 import { toast, ToastContainer } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export type contributorView = {
   name: string;
@@ -74,6 +75,17 @@ export function DataTableCAdmin() {
   const closeDialog = () => {
     setIsOpen(false);
   };
+
+  interface DeliveryDetails {
+    tshirt?: {
+      size?: string;
+      color?: string;
+    };
+    city?: string;
+    state?: string;
+    pincode?: string;
+  }
+  
 
   const columns: ColumnDef<contributorView>[] = [
     {
@@ -115,19 +127,22 @@ export function DataTableCAdmin() {
     {
       accessorKey: "delivery_details",
       header: () => <div style={{ textAlign: "center" }}>Delivery Details</div>,
-      cell: ({ row }) => (
-        <div>
-          T-Shirt Size: {row.getValue("delivery_details")?.tshirt?.size}
-          <br />
-          T-Shirt Color: {row.getValue("delivery_details")?.tshirt?.color}
-          <br />
-          City: {row.getValue("delivery_details")?.city}
-          <br />
-          State: {row.getValue("delivery_details")?.state}
-          <br />
-          Pin Code: {row.getValue("delivery_details")?.pincode}
-        </div>
-      ),
+      cell: ({ row }) => {
+        const details = (row.getValue("delivery_details") as DeliveryDetails) ?? {};
+        return (
+          <div>
+            T-Shirt Size: {details.tshirt?.size || "N/A"}
+            <br />
+            T-Shirt Color: {details.tshirt?.color || "N/A"}
+            <br />
+            City: {details.city || "N/A"}
+            <br />
+            State: {details.state || "N/A"}
+            <br />
+            Pin Code: {details.pincode || "N/A"}
+          </div>
+        );
+      }
     },
     {
       id: "actions",
@@ -145,7 +160,7 @@ export function DataTableCAdmin() {
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuItem
-                onClick={()=> handleBanContributor(contributorTbl._id)}
+                onClick={() => handleBanContributor((contributorTbl as any)._id)}
               >
                 {isBanned ? "Unban Contributor" : "Ban Contributor"}
               </DropdownMenuItem>
@@ -181,7 +196,7 @@ export function DataTableCAdmin() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              token: `${JSON.parse(token).token}`,
+              token: `${JSON.parse(token as string).token}`,
             }),
         });
     
@@ -208,7 +223,7 @@ export function DataTableCAdmin() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              token: `${JSON.parse(token).token}`,
+              token: `${JSON.parse(token as string).token}`,
             }),
         });
     
@@ -236,8 +251,9 @@ export function DataTableCAdmin() {
   React.useEffect(() => {
     let isMounted = true;
     const token = getCookie("user-data");
+    const router = useRouter();
     if(!token) {
-      window.location.href = '/admin'
+      router.push('/admin');
     };
     async function fetchData(page: number) {
       try {
@@ -249,7 +265,7 @@ export function DataTableCAdmin() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              token: `${JSON.parse(token).token}`,
+              token: `${JSON.parse(token as string).token}`,
             }),
           }
         );
@@ -471,13 +487,13 @@ export function DataTableCAdmin() {
                     Enrolled Projects
                   </p>
                   <br />
-                  {selectedUser.enrolledProjects.map((item, index) => (
+                  {selectedUser.enrolledProjects.map((item , index) => (
                     <div style={{ display: "flex", marginBottom: "20px" }}>
                       <div
                         className="displayProject"
-                        key={item.projectId || index}
+                        key={((item as any)?.projectId)|| index}
                       >
-                        <p style={{ fontSize: "18px" }}>{item.projectName}</p>
+                        <p style={{ fontSize: "18px" }}>{((item as any)?.projectName)}</p>
                       </div>
                       <div
                         className="deleteProject"
@@ -493,7 +509,7 @@ export function DataTableCAdmin() {
                           cursor: "pointer",
                         }}
                       >
-                        <div onClick={() => handleDeleteProject(selectedUser._id, item.projectId)}>Delete Project</div>
+                        <div onClick={() => handleDeleteProject((selectedUser as any)._id, (selectedUser as any).projectId)}>Delete Project</div>
                       </div>
                     </div>
                   ))}
@@ -505,7 +521,7 @@ export function DataTableCAdmin() {
                   <br/>
                   <div className="selectOpt" style={{display:"flex",justifyContent:"left"}}>
                     <div className="textSelectOpt" style={{display:"flex",alignItems:"center",marginRight:"20px"}}>
-                      <p>Select Level: </p>
+                      <p>Enter Points: </p>
                     </div>
                     <div className="selectInpt">
                       <Input

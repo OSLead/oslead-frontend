@@ -45,6 +45,7 @@ import {
 import { toast,ToastContainer } from "react-toastify";
 
 import { getCookie } from "cookies-next";
+import { useRouter } from "next/router";
 
 export type ProjectAdminView = {
   name: string;
@@ -83,6 +84,17 @@ export function DataTableProjectAdmin() {
     setselectedPa(user);
     setIsOpen(true);
   };
+  const token = getCookie("user-data");
+
+  interface DeliveryDetails {
+    tshirt?: {
+      size?: string;
+      color?: string;
+    };
+    city?: string;
+    state?: string;
+    pincode?: string;
+  }
 
   const [isBanned, setIsBanned] = React.useState(false);
 
@@ -126,7 +138,7 @@ export function DataTableProjectAdmin() {
     {
       accessorKey: "delivery_details",
       header: () => <div style={{ textAlign: "center" }}>Delivery Details</div>,
-      cell: ({ row }) => (
+      cell: ({ row }: { row: { getValue: (key: string) => DeliveryDetails | undefined } }) => (
         <div>
           T-Shirt Size: {row.getValue("delivery_details")?.tshirt?.size}
           <br />
@@ -156,7 +168,7 @@ export function DataTableProjectAdmin() {
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuItem
-                onClick={()=> handleBanProjectAdmin(projectAdminTbl._id)}
+                onClick={() => handleBanProjectAdmin((projectAdminTbl as any)._id)}
               >
                 {isBanned ? "Unban Project Admin" : "Ban Project Admin"}
               </DropdownMenuItem>
@@ -170,11 +182,6 @@ export function DataTableProjectAdmin() {
     },
   ];
 
-  const token = getCookie("user-data");
-  if(!token) {
-    window.location.href = '/admin'
-  };
-
   const handleBanProjectAdmin = async (projectAdminID: string) => {
     try {
       const response = await fetch(`https://oslead-backend.vercel.app/api/maintainer/ban-maintainer/${projectAdminID}`, 
@@ -184,7 +191,7 @@ export function DataTableProjectAdmin() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            token: `${JSON.parse(token).token}`,
+            token: `${JSON.parse(token as string).token}`,
           }),
       });
   
@@ -209,9 +216,13 @@ export function DataTableProjectAdmin() {
 
   React.useEffect(() => {
     let isMounted = true;
+    const router = useRouter();
 
     async function fetchData(page: number) {
       try {
+        if(!token) {
+          router.push("/admin");
+        }
         const response = await fetch(
           `https://oslead-backend.vercel.app/api/maintainer/get-all-maintainers?page=${page}?limit=10`,
           {
@@ -220,7 +231,7 @@ export function DataTableProjectAdmin() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              token: `${JSON.parse(token).token}`,
+              token: `${JSON.parse(token as string).token}`,
             }),
           }
         );
@@ -259,6 +270,16 @@ export function DataTableProjectAdmin() {
       rowSelection,
     },
   });
+
+  interface Project {
+    _id: string;
+    projectDetails: {
+      name?: string;
+      description?: string;
+      html_url?: string;
+      language?: string;
+    };
+  }
 
   return (
     <div className="w-full">
@@ -433,7 +454,7 @@ export function DataTableProjectAdmin() {
                     <span style={{ fontSize: "18px", fontWeight: "400" }}>
                       Is Banned:
                     </span>{" "}
-                    {selectedPa.isBanned}
+                    {(selectedPa as any).isBanned}
                   </p>
                 </div>
                 <br />
@@ -442,7 +463,7 @@ export function DataTableProjectAdmin() {
                     PA Projects
                   </p>
                   <br />
-                  {selectedPa.projects.map((item, index) => (
+                  {(selectedPa as any).projects?.map((item: Project, index: number) => (
                     <div style={{ display: "flex", marginBottom: "20px" }}>
                       <div
                         className="displayProject"

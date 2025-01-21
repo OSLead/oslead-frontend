@@ -23,6 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   github_repo_link: z.string(),
@@ -35,10 +36,14 @@ export default function AddProject() {
 
   useEffect(() => {
     let isMounted = true;
+    const router = useRouter()
     const token = getCookie("user-data");
     if(!token) {
-      window.location.href = '/admin'
+      router.push('/admin');
     };
+    interface Maintainer {
+      username: string;
+    }
     const fetchAdmins = async () => {
       try {
         const response = await fetch(
@@ -49,7 +54,7 @@ export default function AddProject() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              token: `${JSON.parse(token).token}`,
+              token: `${JSON.parse(token as string).token}`,
             }),
           }
         );
@@ -57,7 +62,7 @@ export default function AddProject() {
           const data = await response.json();
           setAdmins((prevAdmins) => [
             ...prevAdmins,
-            ...data.maintainers.map((item) => item.username),
+            ...data.maintainers.map((item: Maintainer) => item.username),
           ]);
         }
       } catch (error) {
@@ -81,7 +86,7 @@ export default function AddProject() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       const token = getCookie("user-data");
-      const data = { ...values, token: JSON.parse(token).token };
+      const data = { ...values, token: JSON.parse(token as string).token };
       const submitProjectFrm = async (data: object) => {
         try {
           const response = await fetch(
