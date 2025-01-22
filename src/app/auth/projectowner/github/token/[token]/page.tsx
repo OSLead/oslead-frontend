@@ -27,7 +27,7 @@ export default function Page({ params }: { params: { token: string } }) {
       };
 
       const response = await fetch(
-        "https://oslead-backend.vercel.app/api/maintainer/profile-details",
+        "https://oslead-backend.vercel.app/api/maintainer/dashboard-profile",
         requestOptions
       );
       const data = await response.json();
