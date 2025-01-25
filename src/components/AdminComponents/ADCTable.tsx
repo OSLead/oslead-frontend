@@ -43,6 +43,7 @@ import { getCookie } from "cookies-next";
 import { DialogOverlay } from "@radix-ui/react-dialog";
 import { toast, ToastContainer } from "react-toastify";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export type contributorView = {
   name: string;
@@ -63,7 +64,7 @@ export type contributorView = {
 };
 
 export function DataTableCAdmin() {
-
+const router = useRouter();
   const [data, setData] = React.useState<contributorView[]>([]);
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -251,9 +252,11 @@ export function DataTableCAdmin() {
   React.useEffect(() => {
     let isMounted = true;
     const token = getCookie("user-data");
-    const router = useRouter();
+    
     if(!token) {
+      // return <Link href="/admin" />
       router.push('/admin');
+      return;
     };
     async function fetchData(page: number) {
       try {
@@ -334,7 +337,7 @@ export function DataTableCAdmin() {
                     key={column.id}
                     className="capitalize"
                     checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
+                    onCheckedChange={(value:any) =>
                       column.toggleVisibility(!!value)
                     }
                   >
