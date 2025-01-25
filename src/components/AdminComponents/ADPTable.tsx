@@ -46,6 +46,7 @@ import { toast,ToastContainer } from "react-toastify";
 
 import { getCookie } from "cookies-next";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export type ProjectAdminView = {
   name: string;
@@ -65,6 +66,7 @@ export type ProjectAdminView = {
 };
 
 export function DataTableProjectAdmin() {
+  // const router = useRouter();
   const [data, setData] = React.useState<ProjectAdminView[]>([]);
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -215,13 +217,15 @@ export function DataTableProjectAdmin() {
   };
 
   React.useEffect(() => {
+   
     let isMounted = true;
-    const router = useRouter();
+    
 
     async function fetchData(page: number) {
       try {
         if(!token) {
-          router.push("/admin");
+          // router.push("/admin");
+          return <Link href="/admin" />
         }
         const response = await fetch(
           `https://oslead-backend.vercel.app/api/maintainer/get-all-maintainers?page=${page}?limit=10`,
@@ -310,7 +314,7 @@ export function DataTableProjectAdmin() {
                     key={column.id}
                     className="capitalize"
                     checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
+                    onCheckedChange={(value:any) =>
                       column.toggleVisibility(!!value)
                     }
                   >

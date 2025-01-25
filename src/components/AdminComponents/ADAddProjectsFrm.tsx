@@ -31,15 +31,17 @@ const formSchema = z.object({
 });
 
 export default function AddProject() {
+  const router = useRouter()
   const [searchTerm, setSearchTerm] = useState("");
   const [admins, setAdmins] = useState(["self"]); // Initialize admins as a state
 
   useEffect(() => {
     let isMounted = true;
-    const router = useRouter()
+    
     const token = getCookie("user-data");
     if(!token) {
       router.push('/admin');
+      return;
     };
     interface Maintainer {
       username: string;

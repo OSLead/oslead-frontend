@@ -43,7 +43,7 @@ const data = {
         },
         {
           title: "Logout",
-          url: "#",
+          url: "/admin",
         },
       ],
     },
@@ -54,17 +54,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const router = useRouter();
   const handleLogout = () => {
     setCookie("user-data", "", { maxAge: -1 });
+    // return <Link href="/admin" />
     router.push("/admin");
+    return;
   };
   return (
-    <Sidebar {...props} style={{backgroundColor:"white"}}>
+    <Sidebar {...props} style={{backgroundColor:"white" }}>
       <SidebarHeader>
         {/* <div className="logo" style={{display:"flex;",justifyContent:"center;"}}>
           <img src="/socialwinterofcode_logo.png" style={{width:"200px"}} alt="" />
         </div> */}
         <SearchForm />
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="text-black">
         {/* We create a SidebarGroup for each parent. */}
         {data.navMain.map((item) => (
           <SidebarGroup key={item.title}>
