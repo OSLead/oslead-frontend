@@ -67,6 +67,7 @@ export function DataTableCAdmin() {
 const router = useRouter();
   const [data, setData] = React.useState<contributorView[]>([]);
   const [isOpen, setIsOpen] = React.useState(false);
+  const [points, setPoints] = React.useState("");
 
   const openDialog = (user: contributorView) => {
     setSelectedUser(user);
@@ -239,13 +240,44 @@ const router = useRouter();
             toast.success("Contributor Unbanned Successfully!")
           }
 
+          closeDialog();
+
         }
         else {
           toast.error(`Failed to ${isBanned ? "unban" : "ban"} `)
         }
       } catch (error) {
-        console.error('Error deleting project:', error);
-        alert('An error occurred while deleting the project.');
+        console.error('Error banning contributor:', error);
+        alert('An error occurred while banning contributor.');
+      }
+    };
+
+    const handleAddingPoints = async (githubID: string,points: string) => {
+      const token = getCookie("user-data");
+      try {
+        
+        const response = await fetch(`https://oslead-backend.vercel.app/api/admin/assign-points-for-events/${githubID}`, 
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              token: `${JSON.parse(token as string).token}`,
+              points: Number(points),
+            }),
+        });
+    
+        if (response.ok) {
+            closeDialog();
+            toast.success("Points Added Successfully!")
+        }
+        else {
+          toast.error(`Failed to Add points `)
+        }
+      } catch (error) {
+        console.error('Error occured while adding points:', error);
+        alert('An error occurred while adding points.');
       }
     };
 
@@ -529,10 +561,12 @@ const router = useRouter();
                     <div className="selectInpt">
                       <Input
                       placeholder="Enter the points"
+                      value={points}
+                      onChange={(e) => setPoints(e.target.value)}
                       type="number"
                       />
                     </div>
-                    <div className="submitBtn" style={{padding:"10px",backgroundColor:"#D84040",marginLeft:"20px",borderRadius:"10px",color:"white",fontWeight:"600",cursor:"pointer"}}>
+                    <div className="submitBtn" onClick={() => handleAddingPoints((selectedUser as any).github_id,points)} style={{padding:"10px",backgroundColor:"#D84040",marginLeft:"20px",borderRadius:"10px",color:"white",fontWeight:"600",cursor:"pointer"}}>
                       <p>Submit</p>
                     </div>
                   </div>
